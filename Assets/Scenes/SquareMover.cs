@@ -20,6 +20,7 @@ public class SquareMover : MonoBehaviour
         //Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         Vector3 newPosition = transform.position + Vector3.right * 1f;
 
+        //set variables at start
         transform.position = newPosition;
         speed = 0.05f;
         xMax = 8;
@@ -29,9 +30,12 @@ public class SquareMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //vector call
         Vector3 newPosition = transform.position + Vector3.right * speed;
         transform.position = newPosition;
 
+
+        //controls direction of square
         if (transform.position.x >= xMax)
         {
             speed = -0.05f;
