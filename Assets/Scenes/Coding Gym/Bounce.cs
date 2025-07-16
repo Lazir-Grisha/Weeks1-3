@@ -7,7 +7,7 @@ public class Bounce : MonoBehaviour
     public float speed;
     public Camera gameCamera;
 
-    private float change;
+    //private float change;
 
     private int xdirection = 1;
     private int ydirection = 1;
@@ -31,7 +31,7 @@ public class Bounce : MonoBehaviour
         bool left = Input.GetKeyDown(KeyCode.LeftArrow);
         bool right = Input.GetKeyDown(KeyCode.RightArrow);
 
-        Vector3 newScale = transform.scale * change;
+        //Vector3 newScale = transform.scale * change;
 
         transform.position += Vector3.right * speed * xdirection;
         transform.position += Vector3.up * speed * ydirection;
@@ -57,15 +57,15 @@ public class Bounce : MonoBehaviour
         }
 
 
-        if (up == true)
-        {
-            change = 2;
-        }
+        //if (up == true)
+        //{
+        //    change = 2;
+        //}
 
-        if (down == true)
-        {
-            change = 0.5;
-        }
+        //if (down == true)
+        //{
+        //    change = 0.5;
+        //}
 
         if (right == true)
         {
