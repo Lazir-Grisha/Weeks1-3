@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jupiter : MonoBehaviour
 {
-
+    //Jupiter dissapears and reappears on space
     bool display; //a variable to determine whether or not Jupiter is visible
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class Jupiter : MonoBehaviour
         Vector3 newScale = transform.localScale;
         bool Space = Input.GetKeyDown(KeyCode.Space);
         //if statements to turn display on/off when space is pressed
-        //to dissapear it shrinks into nothing0
+        //to dissapear it shrinks into nothing
         if (display == true && Space == true)
         {
             display = false;

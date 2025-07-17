@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OpenBellows : MonoBehaviour
 {
+    //Bellows dissapears and reappears based on number, number changes with right click
+
     bool one;
     bool two;
     bool three;

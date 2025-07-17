@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FanWave : MonoBehaviour
 {
+    //paper Fan flaps up and down on right click
     bool fanup;
 
     // Start is called before the first frame update

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FanBlade : MonoBehaviour
 {
+    //blades rotate around center on spacebar
     public float speed;
     bool on;
     // Start is called before the first frame update
