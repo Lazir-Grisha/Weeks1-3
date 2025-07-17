@@ -15,16 +15,22 @@ public class FanWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform to flap fan
+        Vector3 newRotation = transform.eulerAngles;
         //if statements and boolean to determine fan postion
-        
-         if (Input.GetMouseButtonDown(0) && fanup == true)
+
+        if (Input.GetMouseButtonDown(0) && fanup == true)
         {
             fanup = false;
+            newRotation.z = -50.12f;
+            transform.eulerAngles = newRotation;
             //set fan z rotation to -116.34
         }
-        if (Input.GetMouseButtonDown(0) && fanup == false)
+        else if (Input.GetMouseButtonDown(0) && fanup == false)
         {
             fanup = true;
+            newRotation.z = -6.12f;
+            transform.eulerAngles = newRotation;
             //set fan z rotation to - 50.12
         }
     }

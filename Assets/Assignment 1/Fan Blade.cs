@@ -17,7 +17,7 @@ public class FanBlade : MonoBehaviour
     {
 
         bool Spacebar = Input.GetKeyDown(KeyCode.Space);
-
+        //code that determines if the fan is being turned on/off
         if (on == true && Spacebar == true)
         {
             on = false;
