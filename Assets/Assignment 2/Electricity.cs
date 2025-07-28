@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Electricity : MonoBehaviour
 {
@@ -10,14 +12,14 @@ public class Electricity : MonoBehaviour
     public float minimumPower;
     private float currentPower;
 
-    //variables governing power generation
+    ////variables governing power generation
     public float generate;
     bool on = false;
     private float timeSinceLastGenerate = 0f;
     public float generateFrequency;
 
 
-    //variables governing usage of energy
+    ////variables governing usage of energy
     private float timeSinceLastUse = 0f;
     public float useFrequency;
     public float usage;
@@ -26,11 +28,11 @@ public class Electricity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //start at 50 powers
+        //start at 50 power
         currentPower = 50f;
         powerSlider.value = currentPower/maxPower;
-        useFrequency = random.range(1f, 5f);
-        generateFrequency = random.range(1f, 5f);
+        useFrequency = Random.Range(1f, 5f);
+        generateFrequency = Random.Range(1f, 5f);
         gameStart = false;
     }
 
@@ -41,23 +43,25 @@ public class Electricity : MonoBehaviour
         //electricity starts changing when the game starts
         if (gameStart == true)
         {
-            //everytime timeSinceLastUse is greater than the usage frequency usage equals a random number between 1-20 and then reset timesince and use Frequency
+            //everytime timeSinceLastUse is greater than the usage frequency usage equals a random number between 1 - 20 and then reset timesince and use Frequency
             timeSinceLastUse += Time.deltaTime;
             Debug.Log(timeSinceLastUse.ToString());
-            if (timeSinceLastUse > useFrequency)
+
+            if (timeSinceLastUse >= useFrequency)
             {
-                usage = random.range(1f, 20f);
-                timeSinceLastSpawn = 0f;
-                useFrequency = random.range(1f, 5f);
+                usage = Random.Range(1f, 20f);
+                timeSinceLastUse = 0f;
+                useFrequency = Random.Range(1f, 5f);
             }
 
             timeSinceLastGenerate += Time.deltaTime;
             Debug.Log(timeSinceLastGenerate.ToString());
-            if (timeSinceLastGenerate > generateFrequency)
+
+            if (timeSinceLastGenerate >= generateFrequency)
             {
-                generate = random.range(1f, 20f);
+                generate = Random.Range(1f, 20f);
                 timeSinceLastGenerate = 0f;
-                generateFrequency = random.range(1f, 5f);
+                generateFrequency = Random.Range(1f, 5f);
             }
 
 
@@ -69,13 +73,20 @@ public class Electricity : MonoBehaviour
     public void OnClickOn()
     {
         gameStart = true;
-        if (on == false) {
+        if (on == false)
+        {
             on = true;
             currentPower += -10f;
-        } else if (on == true)
+        }
+        else if (on == true)
         {
             on = false;
         }
     }
+    public void OnPowerChanged()
+    {
+        Debug.Log("Power has changed + " + powerSlider.value.ToString());
+    }
+
 }
 
