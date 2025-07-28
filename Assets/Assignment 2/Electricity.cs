@@ -31,6 +31,7 @@ public class Electricity : MonoBehaviour
         //start at 50 power
         currentPower = 50f;
         powerSlider.value = currentPower/maxPower;
+        //Random.Range was found at https://docs.unity3d.com/ScriptReference/Random.Range.html
         useFrequency = Random.Range(1f, 5f);
         generateFrequency = Random.Range(1f, 5f);
         gameStart = false;
