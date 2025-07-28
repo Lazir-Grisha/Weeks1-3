@@ -17,16 +17,13 @@ public class SpinMeRound : MonoBehaviour
     void Update()
     {
 
-        bool Spacebar = Input.GetKeyDown(KeyCode.Space);
         //code that determines if the fan is being turned on/off
-        if (on == true && Spacebar == true)
+        if (on == false)
         {
-            on = false;
             speed = 0f;
         }
-        else if (on == false && Spacebar == true)
+        else if (on == true)
         {
-            on = true;
             speed = 0.5f;
         }
 
@@ -34,5 +31,17 @@ public class SpinMeRound : MonoBehaviour
         Vector3 newRotation = transform.eulerAngles;
         newRotation.z += speed;
         transform.eulerAngles = newRotation;
+    }
+    public void OnClickSpin()
+    {
+        //if statements to shrink when button pressed
+        if (on == true)
+        {
+            on = false;
+        }
+        else if (on == false)
+        {
+            on = true;
+        }
     }
 }
