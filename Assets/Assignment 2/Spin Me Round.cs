@@ -34,7 +34,7 @@ public class SpinMeRound : MonoBehaviour
     }
     public void OnClickSpin()
     {
-        //if statements to shrink when button pressed
+        //if statements to turn fan on and off with button pressed
         if (on == true)
         {
             on = false;
