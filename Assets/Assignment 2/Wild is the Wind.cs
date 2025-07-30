@@ -11,11 +11,10 @@ public class WildistheWind : MonoBehaviour
 
     //code for spawning and frequency spawn
     public GameObject prefabToSpawn;
+    List<GameObject> spawnedObjects = new List<GameObject>();  //made a list checked it twice
     public float spawnFrequency;
     private float timeSinceLastSpawn = 0f;
-
-    //code for deleting object
-    public GameObject spawnedObject = Instantiate(spawningprefab, spawnPosition, Quaternion.identify);
+    bool objectSpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +25,37 @@ public class WildistheWind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastSpawn += Time.deltaTime;
         if (on == true)
         {
-            timeSinceLastSpawn += Time.deltaTime;
-            Debug.Log(timeSinceLastSpawn.ToString());
-            if (timeSinceLastSpawn > spawnFrequency)
+
+            if (timeSinceLastSpawn > spawnFrequency && objectSpawned == false)
             {
-                Instantiate(prefabToSpawn);
                 timeSinceLastSpawn = 0f;
+                GameObject spawnedObject = Instantiate(prefabToSpawn);
+                spawnedObjects.Add(spawnedObject);
+                objectSpawned = true;
+            }
+            if (timeSinceLastSpawn > spawnFrequency && objectSpawned == true)
+            {
+                for (int i = 0; i < spawnedObjects.Count; i++)
+                {
+                    Destroy(spawnedObjects[i]);
+                }
+                spawnedObjects.Clear();
+                objectSpawned = false;
+            }
+        } else if (on == false && objectSpawned == true)
+            {
+                for (int i = 0; i < spawnedObjects.Count; i++)
+                {
+                    Destroy(spawnedObjects[i]);
+                }
+                spawnedObjects.Clear();
+                objectSpawned = false;
             }
         }
-
-        Destroy(spawnedObject, 2f);
-    }
+    
     public void OnClickGale()
     {
         //if statements to turn fan on and off with button pressed
