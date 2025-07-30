@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Zeusian : MonoBehaviour
 {
-    //Jupiter shrinks on button press
+    //Jupiter shrinks on button press and changes colour
     bool shrink; //a variable to determine whether or not Jupiter is shrunken
+    public SpriteRenderer jupiterRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,10 +40,12 @@ public class Zeusian : MonoBehaviour
         if (shrink == true)
         {
             shrink = false;
+            jupiterRenderer.color = new Color(0.5471698f, 0.2625563f, 0.07484871f); //https://discussions.unity.com/t/change-color-in-c-with-rgb-values/168605
         }
         else if (shrink == false)
         {
             shrink = true;
+            jupiterRenderer.color = new Color(0.7075472f, 0.3833696f, 0.1702118f);
         }
     }
 }
